@@ -1,0 +1,27 @@
+@import url(https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css);
+
+.Index{
+    background-color: #F3F5FD;
+    position: relative;
+    width: 75%;
+    float: right;
+    padding-top: 2%;
+    padding-left: 5%;
+    font-family: 'Nunito Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    padding-bottom: 100%;
+}
+
+
+.MainText{
+    font-weight: bold;
+    font-size: 25px;
+    color: #37B9C5;
+    padding-left: 2%;
+    position: absolute;
+}
+
+.Product{
+    padding-top: 50px;
+}
