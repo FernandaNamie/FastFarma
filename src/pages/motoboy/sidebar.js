@@ -12,14 +12,14 @@ export default function SideBar() {
                     <span>
                         <span className='ClientName'>Leticia. <span className='ClientCode'>#1234
                         </span></span>
-                        <span className="Status New">Novo</span>
+                        <span className="Status New" style={{marginLeft: '4%'}}>Novo</span>
                     </span>
                     <p className='Message'>Clique para aceitar</p>
                 </div>
                 <div className='Client'>
                     <span>
                         <span className='ClientName'>Guilherme. <span className='ClientCode'>#1235</span></span>
-                        <span className='Status Late'>Atrasado</span>
+                        <span className='Status Late' style={{marginLeft: '1%'}}>Atrasado</span>
                     </span>
                     <p className='Message'>Entregue o pedido</p>
                 </div>
