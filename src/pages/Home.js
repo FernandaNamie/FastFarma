@@ -1,11 +1,11 @@
-import NavBar from "./navbar";
+import NavBar from "../components/NavBar";
 import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
-import Card from "./card";
-import SearchColumn from "./searchColumn";
-import { remedios } from "./remedios";
+import Cart from "../components/Cart";
+import SearchColumn from "../components/SearchColumn";
+import { remedios } from "../mockData/remedios";
 import { Col, Row } from "react-bootstrap";
-import TemporaryDrawer from "./Shopping";
+import Shopping from "../components/Shopping";
 import { useState } from "react";
 import React from "react";
 import { Drawer } from "@material-ui/core";
@@ -81,7 +81,7 @@ export default function Home() {
           <Cards>
             {remedios.map((remedio, idx) => {
               return (
-                <Card
+                <Cart
                   nome={remedio.nome}
                   preco={remedio.preco}
                   toggleDrawer={toggleDrawer}
@@ -104,7 +104,7 @@ export default function Home() {
               toggleDrawer(e, false);
             }}
           >
-            <TemporaryDrawer
+            <Shopping
               value={state}
               toggleDrawer={toggleDrawer}
               pedidos={pedidos}

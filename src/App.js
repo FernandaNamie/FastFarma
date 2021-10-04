@@ -1,9 +1,9 @@
-import Index from './pages/motoboy/index';
+import Motoboy from "./pages/motoboy/Motoboy";
 
 function App() {
   return (
     <div>
-      <Index />
+      <Motoboy />
     </div>
   );
 }
