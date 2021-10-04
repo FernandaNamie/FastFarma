@@ -1,21 +1,28 @@
 import React from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 import { FavoriteBorder } from "@material-ui/icons";
 import { PersonOutlineOutlined } from "@material-ui/icons";
 import { ShoppingCartOutlined } from "@material-ui/icons";
+import "./navbar.css";
 
-export default function NavBar() {
-    return (
-        <div>
-            <Bar> 
-                <Logo>FastFarma</Logo> 
-                <StyledSearchInput placeholder="O que você está procurando?"/>
-                <ShoppingCartOutlined />
-                <PersonOutlineOutlined />
-                <FavoriteBorder />
-            </Bar>
-        </div>
-    )
+export default function NavBar(props) {
+  return (
+    <div>
+      <Bar>
+        <Logo>FastFarma</Logo>
+        <StyledSearchInput placeholder="O que você está procurando?" />
+        <ButtonShopping
+          onClick={(e) => {
+            props.toggleDrawer(e, true);
+          }}
+        >
+          <ShoppingCartOutlined className="cart" />
+        </ButtonShopping>
+        <PersonOutlineOutlined />
+        <FavoriteBorder />
+      </Bar>
+    </div>
+  );
 }
 
 const Logo = styled.h2`
@@ -27,7 +34,7 @@ const Logo = styled.h2`
   font-weight: bold;
   margin-top: 10px;
   }
-`
+`;
 
 const Bar = styled.a`
   display: inline-block;
@@ -37,8 +44,8 @@ const Bar = styled.a`
   padding-top: 10px;
   margin: 0;
   }
-`
-  
+`;
+
 const StyledSearchInput = styled.input`
   display: inline-block;
   background: white;
@@ -51,4 +58,13 @@ const StyledSearchInput = styled.input`
   margin-left: 40%;
   margin-right: 10%;
   }
-`
+`;
+
+export const ButtonShopping = styled.button`
+    display: inline-block;
+    background: #CBDFE1;
+    text-align: center;
+    border:0;
+    cursor:pointer;
+}
+`;

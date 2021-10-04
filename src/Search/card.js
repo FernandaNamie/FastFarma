@@ -1,35 +1,50 @@
 import React, { useState } from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 import { ShoppingCartOutlined } from "@material-ui/icons";
-import remedio from './remedio.png';
+import remedio from "./remedio.png";
 
 export default function Card(props) {
-    
-    const [quantidadeProduto, setQuantidadeProduto] = useState(0);
+  const [quantidadeProduto, setQuantidadeProduto] = useState(0);
 
-    function handleClickLess() {
-        if (quantidadeProduto === 0) {
-            setQuantidadeProduto(0)
-        } else {
-            setQuantidadeProduto(quantidadeProduto - 1)
-        }
+  function handleClickLess() {
+    if (quantidadeProduto === 0) {
+      setQuantidadeProduto(0);
+    } else {
+      setQuantidadeProduto(quantidadeProduto - 1);
     }
+  }
 
-    return (
-        <Border>
-            <img src={remedio} width="120px"/>
-            <Title>{props.nome}</Title>
-            <Price>R${props.preco},00</Price>
-            <DivQuantidade >
-                <ButtonLess onClick={(e) => {props.handleClickLess(e, props.index)}}>-</ButtonLess>
-                <Quantidade>{props.quantidade}</Quantidade>
-                <ButtonPlus onClick={(e) => {props.handleClickPlus(e, props.index)}}>+</ButtonPlus>
-                <ButtonShopping onClick={(e) => {props.toggleDrawer(e, true)}}>
-                <ShoppingCartOutlined />
-                </ButtonShopping>
-            </DivQuantidade>
-        </Border>
-    );
+  return (
+    <Border>
+      <img src={remedio} width="120px" />
+      <Title>{props.nome}</Title>
+      <Price>R${props.preco},00</Price>
+      <DivQuantidade>
+        <ButtonLess
+          onClick={(e) => {
+            props.handleClickLess(e, props.index);
+          }}
+        >
+          -
+        </ButtonLess>
+        <Quantidade>{props.quantidade}</Quantidade>
+        <ButtonPlus
+          onClick={(e) => {
+            props.handleClickPlus(e, props.index);
+          }}
+        >
+          +
+        </ButtonPlus>
+        <ButtonShopping
+          onClick={(e) => {
+            props.toggleDrawer(e, true);
+          }}
+        >
+          <ShoppingCartOutlined />
+        </ButtonShopping>
+      </DivQuantidade>
+    </Border>
+  );
 }
 
 const Border = styled.span`
@@ -44,7 +59,7 @@ const Border = styled.span`
   margin-left: 50px;
   text-align: left;
   }
-`
+`;
 
 const Title = styled.div`
   display: inline-block;
@@ -54,7 +69,7 @@ const Title = styled.div`
   color: #555555;
   margin-left:8px;
   }
-`
+`;
 
 const Price = styled.div`
   display: inline-block;
@@ -65,7 +80,7 @@ const Price = styled.div`
   margin-left:8px;
   margin-top: 15px;
   }
-`
+`;
 
 const ButtonLess = styled.button`
   display: inline-block;
@@ -81,7 +96,7 @@ const ButtonLess = styled.button`
   padding:0;
   line-height:25px;
   }
-`
+`;
 
 const ButtonPlus = styled.button`
   display: inline-block;
@@ -98,7 +113,7 @@ const ButtonPlus = styled.button`
   padding:0;
   line-height:25px;
   }
-`
+`;
 
 const DivQuantidade = styled.div`
     // background-color: #F0F3F6;
@@ -106,14 +121,14 @@ const DivQuantidade = styled.div`
     padding: 0;
     margin-top: 17px;
 }
-`
+`;
 const Quantidade = styled.span`
     display: inline-block;
     text-align: center;
     margin-left: 8px;
     font-family: 'Nunito Sans', sans-serif;
 }
-`
+`;
 
 const ButtonShopping = styled.button`
     display: inline-block;
@@ -122,4 +137,4 @@ const ButtonShopping = styled.button`
     border:0;
     cursor:pointer;
 }
-`
+`;
