@@ -13,16 +13,3 @@
     font-weight: normal;
     padding-bottom: 100%;
 }
-
-
-.MainText{
-    font-weight: bold;
-    font-size: 25px;
-    color: #37B9C5;
-    padding-left: 2%;
-    position: absolute;
-}
-
-.Product{
-    padding-top: 50px;
-}
