@@ -1,9 +1,10 @@
-import Index from './pages/motoboy/index';
+import MotoboyScreen from "./pages/motoboy/MotoboyScreen";
+import DrugstoreScreen from "./pages/drugstore/DrugstoreScreen";
 
 function App() {
   return (
     <div>
-      <Index />
+      <DrugstoreScreen />
     </div>
   );
 }
