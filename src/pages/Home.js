@@ -1,7 +1,7 @@
 import NavBar from "../components/NavBar";
 import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
-import Cart from "../components/Cart";
+import Card from "../components/Card";
 import SearchColumn from "../components/SearchColumn";
 import { remedios } from "../mockData/remedios";
 import { Col, Row } from "react-bootstrap";
@@ -81,7 +81,7 @@ export default function Home() {
           <Cards>
             {remedios.map((remedio, idx) => {
               return (
-                <Cart
+                <Card
                   nome={remedio.nome}
                   preco={remedio.preco}
                   toggleDrawer={toggleDrawer}

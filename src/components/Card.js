@@ -12,7 +12,7 @@ import {
   ButtonShopping,
 } from "./StyledComponents";
 
-export default function Cart(props) {
+export default function Card(props) {
   const [quantidadeProduto, setQuantidadeProduto] = useState(0);
 
   function handleClickLess() {

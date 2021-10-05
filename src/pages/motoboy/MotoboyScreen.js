@@ -1,12 +1,12 @@
 import React from "react";
 import SideBar from "../../components/motoboy/sidebar";
-import "./Motoboy.css";
+import "./MotoboyScreen.css";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import GpsFixedIcon from "@material-ui/icons/GpsFixed";
 import NavBar from "../../components/NavBar";
-import Product from "../../components/motoboy/product";
+import Product from "../../components/motoboy/Product";
 
-export default function Index(props) {
+export default function MotoboyScreen() {
   return (
     <div>
       <NavBar />

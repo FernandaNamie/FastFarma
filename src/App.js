@@ -1,9 +1,9 @@
-import Motoboy from "./pages/motoboy/Motoboy";
+import MotoboyScreen from "./pages/motoboy/MotoboyScreen";
 
 function App() {
   return (
     <div>
-      <Motoboy />
+      <MotoboyScreen />
     </div>
   );
 }

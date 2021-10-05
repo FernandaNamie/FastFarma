@@ -1,0 +1,13 @@
+@import url(https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css);
+
+.MainText{
+    font-weight: bold;
+    font-size: 25px;
+    color: #37B9C5;
+    padding-left: 2%;
+    position: absolute;
+}
+
+.Product{
+    padding-top: 50px;
+}
