@@ -4,14 +4,14 @@ import styled from 'styled-components';
 import { Col, Row } from 'react-bootstrap';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import remedio from '../../img/remedio.png';
-import { remedios } from "../../mockData/remedios";
-import { useState } from "react";
+import ProductLine from '../../components/client/ProductLine.js';
+import { pedido } from "../../mockData/pedido";
 
 export default function OrderStatus() {
-
-  const [pedidos, setPedidos] = useState(remedios);
-
+  let total = 0;
+  for (let i = 0; i < pedido.length; i++) {
+    total = total + pedido[i].price * pedido[i].amount;
+  }
   return (
     <div>
       <NavBar />
@@ -56,25 +56,15 @@ export default function OrderStatus() {
                       <Amount>Quantidade</Amount>
                     </Col>
                   </Row>
-                  {/* inicio linha de produto */}
-                  <Row>
-                    <Col md="8">
-                      <Row>
-                        <Col md="4">
-                          <img src={remedio} width="100%" />
-                        </Col>
-                        <Col md="8">
-                          <Product>Spray de Tantum Verde para aplicação tópica, 30ml</Product>
-                          <Price>R$50,00</Price>
-                        </Col>
-                      </Row>
-                    </Col>
-                    <Col md="4">
-                      <ProductAmount>1x</ProductAmount>
-                    </Col>
-                    <ProductsDivider />
-                  </Row>
-                  {/* fim linha de produto */}
+                  {pedido.map((item, idx) => {
+                    return (
+                      <ProductLine
+                        name={item.name}
+                        amount={item.amount}
+                        price={item.price}
+                      />
+                    );
+                  })}
                   <Row>
                     <Col md="8">
                       <Row>
@@ -90,7 +80,7 @@ export default function OrderStatus() {
                           Total:
                         </Col>
                         <Col md="8">
-                          <Price>R$56,00</Price>
+                          <Price>R${total + 6},00</Price>
                         </Col>
                       </Row>
                     </Col>
@@ -197,22 +187,6 @@ const Amount = styled.p`
   margin: 3px;
   }
 `
-const ProductAmount = styled.p`
-  display: inline-block;
-  font-family: 'Manrope', sans-serif;
-  font-size: 14px;
-  margin: 3px;
-  }
-`
-const Product = styled.p`
-  text-align: left;
-  display: inline-block;
-  color: black;
-  font-family: 'Manrope', sans-serif;
-  font-size: 12px;
-  margin: 3px;
-  }
-`
 
 const Price = styled.p`
   width: 100%;
@@ -223,17 +197,6 @@ const Price = styled.p`
   font-size: 16px;
   font-weight: bold;
   margin: 3px;
-  }
-`
-
-const ProductsDivider = styled.span`
-  height: 1px;
-  width: 100%;
-  opacity: 0.5;
-  background-color: #bbb;
-  display: inline-block;
-  position: relative;
-  margin-top: 5px;
   }
 `
 
