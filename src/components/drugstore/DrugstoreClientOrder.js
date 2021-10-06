@@ -5,13 +5,9 @@ export default function DrugstoreClientOrder(props) {
   return (
     <>
       <p>
-<<<<<<< HEAD
-        <span style={{ color: "#37B9C5", fontWeight: "bold" }}>Quantidade</span>
-=======
         <span style={{ fontWeight: "bold", paddingLeft: "60px" }}>
           Quantidade
         </span>
->>>>>>> 2ea87fd9472685babda38f6c951bac7c62eb0fba
         <span style={{ fontWeight: "bold", paddingLeft: "60px" }}>
           Detalhes do Pedido
         </span>
