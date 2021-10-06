@@ -9,11 +9,13 @@ import {
   ButtonShoppingNavBar,
 } from "./StyledComponents";
 import "./NavBar.css";
+import icon from "../img/logo.png"
 
 export default function NavBar(props) {
   return (
     <div>
       <Bar>
+        <img src={icon} width="45px" />
         <Logo>FastFarma</Logo>
         <StyledSearchInput placeholder="O que você está procurando?" />
         <ButtonShoppingNavBar
