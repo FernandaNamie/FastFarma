@@ -1,0 +1,6 @@
+export const pedido = [
+
+    { name: "Nurofen para crianças 230ml", price: 20, amount: 1 },
+    { name: "Band-aid Compeed 10 unidades", price: 5, amount: 2 },
+
+];

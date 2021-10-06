@@ -11,7 +11,11 @@ export default function Product(props) {
           paddingBottom: "20px",
         }}
       >
+<<<<<<< HEAD
         <div class="col-2">x1</div>
+=======
+        <div class="col-2">{props.amount}x</div>
+>>>>>>> 2ea87fd9472685babda38f6c951bac7c62eb0fba
         <div class="col-8">{props.product}</div>
         <div class="col">R${props.price}</div>
       </div>
