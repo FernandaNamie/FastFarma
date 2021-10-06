@@ -6,6 +6,8 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProductLine from '../../components/client/ProductLine.js';
 import { pedido } from "../../mockData/pedido";
+import OrderStatusHeader from '../../components/client/OrderStatusHeader.js';
+import OrderStatusTimeLine from '../../components/client/OrderStatusTimeline.js';
 
 export default function OrderStatus() {
   let total = 0;
@@ -20,34 +22,10 @@ export default function OrderStatus() {
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Col md="8">
             <Rectangle>
-              <Status>Pedido confirmado!</Status>
-              <OrderInformation>#A821AJKSD90</OrderInformation>
-              <OrderInformation>Previsão de entrega: 12h50 - 13h00</OrderInformation>
-              <DivLine>
-              </DivLine>
+              <OrderStatusHeader />
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <Col md="6">
-                  <Row>
-                    <Col><Point /></Col>
-                    <Col><Point /></Col>
-                    <Col><Point /></Col>
-                    <Col><Point /></Col>
-                  </Row>
-                  <Line />
-                  <Row>
-                    <Col>
-                      <StatusInformation>Realizado</StatusInformation>
-                    </Col>
-                    <Col>
-                      <StatusInformation>Confirmado</StatusInformation>
-                    </Col>
-                    <Col>
-                      <StatusInformation>A caminho</StatusInformation>
-                    </Col>
-                    <Col>
-                      <StatusInformation>Entregue</StatusInformation>
-                    </Col>
-                  </Row>
+                  <OrderStatusTimeLine />
                   <Row>
                     <Col md="8">
                       <Details>Detalhes do Pedido</Details>
@@ -111,60 +89,6 @@ const Rectangle = styled.button`
   height: 100%;
   font-size: 15px;
   margin-top: 40px;
-  }
-`
-
-const Status = styled.h2`
-  display: inline-block;
-  width: 100%;
-  color: #37B9C5;
-  font-family: 'Manrope', sans-serif;
-  font-size: 30px;
-  font-weight: bold;
-  margin-top: 10px;
-  }
-`
-const OrderInformation = styled.p`
-  display: inline-block;
-  width: 100%;
-  color: black;
-  font-family: 'Manrope', sans-serif;
-  font-size: 12px;
-  font-weight: bold;
-  margin: 3px;
-  }
-`
-
-const Point = styled.span`
-  height: 20px;
-  width: 20px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  }
-`
-const Line = styled.span`
-  height: 1px;
-  width: 80%;
-  background-color: #bbb;
-  display: inline-block;
-  position: relative;
-  top: -32px;
-  }
-`
-
-const StatusInformation = styled.p`
-  display: inline-block;
-  color: black;
-  font-family: 'Manrope', sans-serif;
-  font-size: 12px;
-  font-weight: bold;
-  }
-`
-
-const DivLine = styled.span`
-  display: inline-block;
-  width: 100%;
   }
 `
 
