@@ -16,7 +16,7 @@ export default function MotoboyScreen() {
         <ErrorOutlineIcon fontSize="large" />
         <Order order={pedido}/>
       </div>
-      <SideBar />
+      <SideBar orders= {pedidos}/>
     </div>
   );
 }
