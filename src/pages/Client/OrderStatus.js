@@ -1,12 +1,17 @@
-import NavBar from './navbar'
+import NavBar from '../../components/NavBar.js'
 import { createGlobalStyle } from 'styled-components'
 import styled from 'styled-components';
 import { Col, Row } from 'react-bootstrap';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import remedio from './remedio.png';
+import remedio from '../../img/remedio.png';
+import { remedios } from "../../mockData/remedios";
+import { useState } from "react";
 
-export default function Home() {
+export default function OrderStatus() {
+
+  const [pedidos, setPedidos] = useState(remedios);
+
   return (
     <div>
       <NavBar />
