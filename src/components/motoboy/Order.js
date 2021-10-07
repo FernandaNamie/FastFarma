@@ -48,7 +48,7 @@ export default function Order(props){
                 style={{ paddingTop: "20px", paddingBottom: "20px" }}
                 >
                 <span style={{ color: "#37B9C5" }}>Frente:</span>
-                <span style={{ paddingLeft: "11px" }}>R$6,00</span>
+                <span style={{ paddingLeft: "11px" }}>R${props.order.shipping}</span>
                 </div>
                 <div class="w-100"></div>
                 <div
@@ -57,7 +57,7 @@ export default function Order(props){
                 >
                 <span style={{ color: "#37B9C5" }}>Total:</span>
                 <span style={{ paddingLeft: "20px", fontWeight: "bold" }}>
-                    R$106,00
+                    R${props.order.total}
                 </span>
                 </div>
             </div>
