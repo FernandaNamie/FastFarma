@@ -28,43 +28,18 @@ describe('Navegação e Funcionalidade', () => {
         });
       })
     /** */
-    /** */
-    it('deve preencher o formulário e incluir "Tarefa Nova"', () => {
-      const tarefa = 'Tarefa Nova'
-      cy.get('[id="formulario_todo"]').type(tarefa).should('have.value', tarefa)
-      cy.get('[id="formulario_todo_button"]').click()
-    })
-    /** */
-    it('deve conter 4 elementos após a inclusão', () => {
-      cy.get('[id="listaTodos"]').children().should('have.length', 4)
-    })
-    /** */
-    it('deve eliminar a primeira tarefa', () => {
-      cy.get('[id="listaTodos"]')
-        .children()
-        .first()
-        .children()
-        .last()
-        .children()
-        .last()
-        .click()
-    })
-    /** */
-    it('deve ter três elementos após a eliminação do primeiro', () => {
-      cy.get('[id="listaTodos"]').children().should('have.length', 3)
-    })
-    it('deve mostrar mensagem de lista vazia após eliminação das tarefas', () => {
-      const mensagem = 'a Todo-List está vazia, adicione uma tarefa...'
-      for (let i = 0; i < 3; i++) {
-        cy.get('[id="listaTodos"]')
-          .children()
-          .first()
+    it('O valor total deve ser a soma dos produtos', () => {
+      for (let i = 0; i < 6; i++) {
+        cy.get(`[id="card${i}"]`)
           .children()
           .last()
           .children()
-          .last()
+          .eq(2)
           .click()
       }
-      cy.get('[id="listaVazia"').should('contain', mensagem)
+      cy.get(`[id="card0"]`).children().last().children().last().click().get('[class="row"]').last().children()
+      .last().invoke('text').then((text) => {
+        expect(text.trim()).equal('R$105,00')
+       });
     })
   })
