@@ -6,6 +6,8 @@ export const pedidos = [
     message: "Clique para aceitar",
     minDeliveryTime: "12h50",
     maxDeliveryTime: "13h00",
+    drugStoreAddress: "Barroso Neto, 562",
+    clientAddress: "R. Vicente Linhares, 342",
     products: [
       {
         productName: "Spray de Tantum Verde para aplicação tópica, 30ml",
