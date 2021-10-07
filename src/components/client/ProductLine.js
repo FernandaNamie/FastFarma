@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 export default function ProductLine(props) {
     return (
-        <div>
+        <div id={props.id} name={props.name} price={props.price} amount={props.amount}>
             < Row >
                 <Col md="8">
                     <Row>
@@ -13,13 +13,13 @@ export default function ProductLine(props) {
                             <img src={remedio} width="100%" />
                         </Col>
                         <Col md="8">
-                            <Product>{props.name}</Product>
-                            <Price>R${props.price},00</Price>
+                            <Product id="name">{props.name}</Product>
+                            <Price id="price">R${props.price},00</Price>
                         </Col>
                     </Row>
                 </Col>
                 <Col md="4">
-                    <ProductAmount>{props.amount}x</ProductAmount>
+                    <ProductAmount id="amount">{props.amount}x</ProductAmount>
                 </Col>
                 <ProductsDivider />
             </Row >
