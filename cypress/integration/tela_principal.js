@@ -9,9 +9,25 @@ describe('Navegação e Funcionalidade', () => {
     })
     /** */
     /** */
-    it('deve ter 3 elementos iniciais', () => {
+    it('deve ter 4 elementos iniciais', () => {
       cy.get('[id="card0"]').children().should('have.length', 4)
     })
+    /** */
+    it('dever ser um numero não negativo', () => {
+        cy.get('[id="card0"]')
+          .children()
+          .last()
+          .children()
+          .first()
+          .click()
+          .parent()
+          .children()
+          .eq(1)
+          .invoke('text').then((text) => {
+            expect(text.trim()).equal('0')
+        });
+      })
+    /** */
     /** */
     it('deve preencher o formulário e incluir "Tarefa Nova"', () => {
       const tarefa = 'Tarefa Nova'
