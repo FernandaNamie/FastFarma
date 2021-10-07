@@ -13,7 +13,7 @@ export default function Product(props){
           <div class="col-8">
              {props.name}
           </div>
-          <div class="col">R${props.price}</div>
+          <div class="col" id={`price${props.idx}`}>R${props.price}</div>
           </div>
     </div>
   )
