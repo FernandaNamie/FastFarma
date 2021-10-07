@@ -78,7 +78,7 @@ export default function Home() {
           <SearchColumn />
         </Col>
         <Col md="10">
-          <Cards>
+          <Cards id={'Cards'}>
             {remedios.map((remedio, idx) => {
               return (
                 <Card
@@ -89,6 +89,7 @@ export default function Home() {
                   handleClickPlus={handleClickPlus}
                   index={idx}
                   quantidade={pedidos[idx].quantidade}
+                  id={`card${idx}`}
                 />
               );
             })}
