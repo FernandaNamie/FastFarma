@@ -11,7 +11,7 @@ export default function SideBar(props) {
     props.update(data[0])
   };
   
-  const [key, setKey] = useState(props.orders[0]);
+  const [key, setKey] = useState(props.orders[0].orderNumber);
 
     return (
         <div>
