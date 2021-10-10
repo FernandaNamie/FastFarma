@@ -1,0 +1,39 @@
+.ClientData{
+    border-bottom: 1px solid black;
+}
+
+
+.ClientsStyle {
+    width: 25%;
+    letter-spacing: 0.03em;
+    height: 825px;
+    background: white;
+}
+  
+.Client {
+    height: 10%;
+    padding-top: 20px;
+    padding-left: 10px;
+}
+
+.ClientSelected {
+  background: #e5e5e5;
+}
+.ClientName {
+    font-family: "Nunito Sans", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 33px;
+}
+  
+.ClientCode {
+    font-family: "Nunito Sans", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 27px;
+    letter-spacing: 0.03em;
+    color: #adb3bc;
+}
+  
