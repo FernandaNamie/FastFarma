@@ -4,6 +4,31 @@ import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import DrugstoreClientOrder from "./DrugstoreClientOrder";
 
 export default function DrugstoreFeed(props) {
+  let getButton = <></>;
+
+  if (props.pedido.status === "Novo")
+    getButton = (
+      <>
+        <button
+          type="button"
+          class="btn btn-outline-dark"
+          style={{ background: "#37B9C5", borderColor: "#37B9C5" }}
+        >
+          ACEITAR PEDIDO
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-dark"
+          style={{
+            marginLeft: "5px",
+            background: "#FF5A5A",
+            borderColor: "#FF5A5A",
+          }}
+        >
+          RECUSAR PEDIDO
+        </button>
+      </>
+    );
   return (
     <div className="Index">
       <ErrorOutlineIcon fontSize="large" />
@@ -17,7 +42,11 @@ export default function DrugstoreFeed(props) {
           </div>
         </div>
         <div className="row">
-          <div className="col-6" style={{ fontWeight: "bold" }}>
+          <div
+            className="col-6"
+            style={{ fontWeight: "bold" }}
+            id="deliveryTime"
+          >
             Previsão de entrega: {props.minDeliveryTime} -{" "}
             {props.maxDeliveryTime}
           </div>
@@ -27,25 +56,8 @@ export default function DrugstoreFeed(props) {
         <DrugstoreClientOrder pedido={props.pedido} />
         <div class="row justify-content-center">
           <div class="w-100"></div>
-          <div class="col-6" style={{ margin: "auto" }}>
-            <button
-              type="button"
-              class="btn btn-outline-dark"
-              style={{ background: "#37B9C5", borderColor: "#37B9C5" }}
-            >
-              ACEITAR PEDIDO
-            </button>
-            <button
-              type="button"
-              class="btn btn-outline-dark"
-              style={{
-                marginLeft: "5px",
-                background: "#FF5A5A",
-                borderColor: "#FF5A5A",
-              }}
-            >
-              RECUSAR PEDIDO
-            </button>
+          <div class="col-6" id="buttons" style={{ margin: "auto" }}>
+            {getButton}
           </div>
         </div>
       </div>

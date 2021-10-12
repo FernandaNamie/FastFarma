@@ -11,16 +11,16 @@ export default function Order(props){
             <div className="col-6" style={{ fontWeight: "bold" }}>
                 {props.order.orderNumber}
             </div>
-            <div className="col-6">
+            <div className="col-6" id="enderecoOrigem">
                 <GpsFixedIcon /> <span style={{ fontWeight: "bold" }}>De:</span>{" "}
                 {props.order.drugStoreAddress}
             </div>
             </div>
             <div className="row">
-            <div className="col-6" style={{ fontWeight: "bold" }}>
+            <div className="col-6" style={{ fontWeight: "bold" }} id="previsaoEntrega">
                 Previsão de entrega: {props.order.minDeliveryTime} - {props.order.maxDeliveryTime}
             </div>
-            <div className="col-6">
+            <div className="col-6" id="enderecoDestino">
                 <GpsFixedIcon /> <span style={{ fontWeight: "bold" }}>Para:</span>{" "}
                 {props.order.clientAddress}
             </div>
@@ -39,6 +39,7 @@ export default function Order(props){
                     amount={item.amount}
                     name={item.productName}
                     price={item.price}
+                    idx={idx}
                 />
                 );
             })}
@@ -48,7 +49,7 @@ export default function Order(props){
                 style={{ paddingTop: "20px", paddingBottom: "20px" }}
                 >
                 <span style={{ color: "#37B9C5" }}>Frente:</span>
-                <span style={{ paddingLeft: "11px" }}>R${props.order.shipping}</span>
+                <span style={{ paddingLeft: "11px" }} id="freteMotoboy">R${props.order.shipping}</span>
                 </div>
                 <div class="w-100"></div>
                 <div
@@ -56,7 +57,7 @@ export default function Order(props){
                 style={{ paddingTop: "20px", paddingBottom: "20px" }}
                 >
                 <span style={{ color: "#37B9C5" }}>Total:</span>
-                <span style={{ paddingLeft: "20px", fontWeight: "bold" }}>
+                <span style={{ paddingLeft: "20px", fontWeight: "bold" }} id="valorTotal">
                     R${props.order.total}
                 </span>
                 </div>

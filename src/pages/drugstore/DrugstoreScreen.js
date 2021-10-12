@@ -1,11 +1,15 @@
-import React from "react";
+import { React, useState } from "react";
 import Sidebar from "../../components/drugstore/Sidebar";
 import NavBar from "../../components/NavBar";
 import DrugstoreFeed from "../../components/drugstore/DrugstoreFeed";
 import { pedidos } from "../../mockData/pedidos";
 
 export default function DrugstoreScreen() {
-  let pedido = pedidos[0];
+  function update(data) {
+    setPedido(data);
+  }
+  const [pedido, setPedido] = useState(pedidos[0]);
+
   return (
     <div>
       <NavBar />
@@ -16,7 +20,7 @@ export default function DrugstoreScreen() {
         maxDeliveryTime={pedido.maxDeliveryTime}
         pedido={pedido}
       />
-      <Sidebar pedidos={pedidos} />
+      <Sidebar orders={pedidos} update={update} />
     </div>
   );
 }

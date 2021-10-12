@@ -1,14 +1,13 @@
-import {React, useState} from "react";
+import { React, useState } from "react";
 import SideBar from "../../components/motoboy/Sidebar";
 import "./MotoboyScreen.css";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import NavBar from "../../components/NavBar";
-import Product from "../../components/motoboy/Product";
 import Order from "../../components/motoboy/Order";
 import { pedidos } from "../../mockData/pedidos";
 
 export default function MotoboyScreen() {
-  function update(data){
+  function update(data) {
     setPedido(data);
   }
   const [pedido, setPedido] = useState(pedidos[0]);
@@ -18,9 +17,9 @@ export default function MotoboyScreen() {
       <NavBar />
       <div className="Index">
         <ErrorOutlineIcon fontSize="large" />
-        <Order order={pedido}/>
+        <Order order={pedido} />
       </div>
-      <SideBar orders= {pedidos} update={update}/>
+      <SideBar orders={pedidos} update={update} />
     </div>
   );
 }
