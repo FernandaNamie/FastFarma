@@ -11,6 +11,7 @@ import OrderStatusTimeLine from '../../components/client/OrderStatusTimeline.js'
 
 export default function OrderStatus() {
   let total = 0;
+  let frete = 6;
   for (let i = 0; i < pedido.length; i++) {
     total = total + pedido[i].price * pedido[i].amount;
   }
@@ -34,15 +35,18 @@ export default function OrderStatus() {
                       <Amount>Quantidade</Amount>
                     </Col>
                   </Row>
-                  {pedido.map((item, idx) => {
-                    return (
-                      <ProductLine
-                        name={item.name}
-                        amount={item.amount}
-                        price={item.price}
-                      />
-                    );
-                  })}
+                  <div id="products">
+                    {pedido.map((item, idx) => {
+                      return (
+                        <ProductLine
+                          name={item.name}
+                          amount={item.amount}
+                          price={item.price}
+                          id={`product-${idx}`}
+                        />
+                      );
+                    })}
+                  </div>
                   <Row>
                     <Col md="8">
                       <Row>
@@ -50,7 +54,9 @@ export default function OrderStatus() {
                           Frete:
                         </Col>
                         <Col md="8">
-                          <Price>R$6,00</Price>
+                          <div id="frete" frete={frete}>
+                            <Price>R${frete},00</Price>
+                          </div>
                         </Col>
                       </Row>
                       <Row>
@@ -58,7 +64,9 @@ export default function OrderStatus() {
                           Total:
                         </Col>
                         <Col md="8">
-                          <Price>R${total + 6},00</Price>
+                          <div id="total" total={total + frete}>
+                            <Price>R${total + frete},00</Price>
+                          </div>
                         </Col>
                       </Row>
                     </Col>
