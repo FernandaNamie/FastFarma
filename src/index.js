@@ -6,6 +6,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import MotoboyScreen from './pages/motoboy/MotoboyScreen';
 import DrugstoreScren from './pages/drugstore/DrugstoreScreen';
 import OrderStatus from './pages/Client/OrderStatus'
+import Login from './pages/Auth/Login'
 
 ReactDOM.render(
   <BrowserRouter>
@@ -14,6 +15,7 @@ ReactDOM.render(
         <Route path="/motoboy" component={MotoboyScreen} />
         <Route path="/farmacia" component={DrugstoreScren} />
         <Route path="/cliente" component={OrderStatus} />
+        <Route path="/login" component={Login} />
     </Switch>
   </ BrowserRouter>,
   document.getElementById("root")
