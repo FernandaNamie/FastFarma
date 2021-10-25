@@ -1,12 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Input } from "@material-ui/core";
 import { InputAdornment } from "@material-ui/core";
 import { SearchOutlined } from "@material-ui/icons";
 import { RadioGroup, Radio } from "@material-ui/core";
 import { FormControlLabel } from "@material-ui/core";
 import { Column, Bullet, ButtonFilter } from "./StyledComponents";
+import axios from "axios";
 
-export default function SearchColumn() {
+export default function SearchColumn(props) {
+  const [name, setName] = useState('');
+  const [tipo, setTipo] = useState('');
+
+  function search(){
+    if(name != '') {
+      if(tipo == '') {
+        axios.get('http://localhost:8080/produtos/busca?nome=' + name)
+        .then(response => props.setRemediosApi(response.data));
+      } else {
+        axios.get('http://localhost:8080/produtos/busca?nome=' + name + '&tipo=' + tipo)
+        .then(response => props.setRemediosApi(response.data));
+      }
+    } else {
+      if(tipo != '') {
+        axios.get('http://localhost:8080/produtos/busca?tipo=' + tipo)
+        .then(response => props.setRemediosApi(response.data));
+      }
+    }
+
+  }
+
+  const handleChange = (event) => {
+    setTipo(event.target.value);
+  };
+
+  console.log(tipo);
   return (
     <Column>
       <div>
@@ -18,6 +45,8 @@ export default function SearchColumn() {
               <SearchOutlined />
             </InputAdornment>
           }
+          value={name}
+          onInput={e => setName(e.target.value)}
         />
       </div>
       <Bullet>
@@ -25,26 +54,28 @@ export default function SearchColumn() {
           aria-label="typeProduct"
           defaultValue="Medicamentos"
           name="radio-buttons-group"
+          value={tipo}
+          onChange={handleChange}
         >
           <FormControlLabel
-            value="medicamentos"
-            control={<Radio size="small" color="success" />}
+            value="medicamento"
+            control={<Radio size="small" color="default" />}
             label="Medicamentos"
           />
           <FormControlLabel
-            value="cosmeticos"
+            value="cosmetico"
             control={<Radio size="small" color="default" />}
             label="Cosméticos"
           />
           <FormControlLabel
-            value="receitados"
-            control={<Radio size="small" color="success" />}
+            value="receitado"
+            control={<Radio size="small" color="default" />}
             label="Receitados"
           />
         </RadioGroup>
       </Bullet>
       <div>
-        <ButtonFilter>Filtrar</ButtonFilter>
+        <ButtonFilter onClick={(e) => { search()}}>Filtrar</ButtonFilter>
       </div>
     </Column>
   );
