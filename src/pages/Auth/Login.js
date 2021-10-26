@@ -9,13 +9,15 @@ export default function Login() {
     const [showSuccessMessage, setSuccessMessage] = useState(false);
 
     function loginClicked() {
+        AuthenticationService();
         AuthenticationService
-            .executeBasicAuthenticationService(this.state.username, this.state.password)
+            .executeBasicAuthenticationService(clientName, password)
             .then(() => {
-                this.props.history.push(`/courses`)
+                setLoginFailed(false)
+                setSuccessMessage(true)
             }).catch(() => {
-                this.setState({ showSuccessMessage: false })
-                this.setState({ hasLoginFailed: true })
+                setLoginFailed(true)
+                setSuccessMessage(false)
             })
     }
 
