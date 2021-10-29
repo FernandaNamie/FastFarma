@@ -74,7 +74,7 @@ export default function OrderStatus() {
 
                 </Col>
               </div>
-              <NavigationButton>Voltar a navegar</NavigationButton>
+              <a href="/"><NavigationButton>Voltar a navegar</NavigationButton></a>
             </Rectangle>
           </Col>
         </div>

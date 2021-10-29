@@ -84,6 +84,15 @@ export default function Home() {
     setPedidos([...pedidos]);
   }
 
+  function handlePedidos(changePedidos){
+    const formData = new FormData();
+
+    formData.append('data',JSON.stringify(changePedidos));
+    axios.post('http://localhost:8080/order/', changePedidos).catch(function (error) {
+      console.log(error);
+  });
+  }
+
   return (
     <div>
       <NavBar toggleDrawer={toggleDrawer} />
@@ -127,6 +136,7 @@ export default function Home() {
               handleClickLess={handleClickLess}
               handleClickPlus={handleClickPlus}
               handleDelete={handleDelete}
+              handlePedidos={handlePedidos}
             />
           </Drawer>
         </React.Fragment>

@@ -26,6 +26,7 @@ export default function Shopping(props) {
   const history = useHistory();
 
   const routeChange = () =>{ 
+    props.handlePedidos(pedidos);
     let path = `/cliente`; 
     history.push(path);
   }
