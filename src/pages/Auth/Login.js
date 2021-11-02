@@ -6,19 +6,23 @@ import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import LockIcon from "@material-ui/icons/Lock";
 import ArrowDownwardIcon from '@material-ui/icons/KeyboardArrowDown';
 import "./Login.css";
+import { Col, Row } from 'react-bootstrap';
 
 export default function Login() {
     const [clientName, setName] = useState("");
     const [password, setPassword] = useState("");
+    const [tipoUsuario, setTipoUsuario] = useState();
     const [hasLoginFailed, setLoginFailed] = useState(false);
     const [showSuccessMessage, setSuccessMessage] = useState(false);
-    const USER_TOKEN = localStorage.getItem('token')
     const dropDownRef = useRef(null);
 
     const history = useHistory();
 
     const routeChange = () => {
-        let path = `/`;
+        let path = '';
+        if (localStorage.getItem('tipoUsuario') === "CLIENTE") { path = '/' }
+        else if (localStorage.getItem('tipoUsuario') === "MOTOBOY") { path = '/motoboy' }
+        else { path = '/farmacia' }
         history.push(path);
     }
 
@@ -35,16 +39,18 @@ export default function Login() {
         // 1) enviar como parametro para executeBasicAuthenticationService(clientName, password, tipoUsuario)
         // 2) salvar no localStorage.setItem('tipoUsuario', tipoUsuario) pra saber pra onde redirecionar
         AuthenticationService();
-        AuthenticationService.executeBasicAuthenticationService(clientName, password, "CLIENTE")
+        AuthenticationService.executeBasicAuthenticationService(clientName, password, tipoUsuario)
         if (localStorage.getItem('token') === "erro") {
             setLoginFailed(true)
             setSuccessMessage(false)
         } else {
+            localStorage.setItem('tipoUsuario', tipoUsuario)
             setLoginFailed(false)
             setSuccessMessage(true)
             routeChange()
         }
     }
+
     return (
         <div>
             <NavBar />
@@ -84,6 +90,13 @@ export default function Login() {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </span>
+                    <div style={{ marginTop: "20px" }}>
+                        <Row>
+                            <Col md="4"><input type="radio" value="CLIENTE" name="tipoUsuario" onChange={(e) => setTipoUsuario(e.target.value)} /> Cliente</Col>
+                            <Col md="4"><input type="radio" value="MOTOBOY" name="tipoUsuario" onChange={(e) => setTipoUsuario(e.target.value)} /> Motoboy</Col>
+                            <Col md="4"><input type="radio" value="FARMACIA" name="tipoUsuario" onChange={(e) => setTipoUsuario(e.target.value)} /> Farmácia</Col>
+                        </Row>
+                    </div>
                 </div>
                 <div class="col-md-6 offset-md-3">
                     <div class="form-check">
