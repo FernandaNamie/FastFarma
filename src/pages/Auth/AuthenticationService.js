@@ -4,16 +4,25 @@ const API_URL = 'http://localhost:8080';
 
 export default function AuthenticationService() {
 
-    function createBasicAuthToken(username, password) {
-        return 'Basic ' + window.btoa(username + ":" + password)
+    function executeBasicAuthenticationService(nomeUsuario, senha, tipoUsuario) {
+        axios({
+            method: 'post',
+            url: API_URL + '/login',
+            headers: {
+                'content-type': 'application/json'
+            },
+            data: {
+                "nomeUsuario": nomeUsuario,
+                "senha": senha,
+                "tipoUsuario": tipoUsuario
+            }
+        }).then(response => {
+            localStorage.setItem('token', response.data)
+        }).catch(error => {
+            console.log(error)
+            localStorage.setItem('token', 'erro')
+        })
     }
 
-    function executeBasicAuthenticationService(username, password) {
-        return axios.get(`${API_URL}/basicauth`,
-            { headers: { authorization: createBasicAuthToken(username, password) } })
-    }
-
-    AuthenticationService.createBasicAuthToken = createBasicAuthToken
     AuthenticationService.executeBasicAuthenticationService = executeBasicAuthenticationService
 }
-  
