@@ -1,0 +1,47 @@
+.clientInput{
+    padding-left : 30px !important;
+}
+
+.ButtonPosition{
+    justify-content: center;
+    display: flex;
+    padding-top: 40px;
+}
+
+/* dropdown */
+.dropdown-login{
+    font-family: 'Overpass', sans-serif;
+    justify-content: flex-start;
+    display: grid;
+}
+
+.createAccount{
+    font-family: 'Overpass', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 21px;
+
+    /* identical to box height */
+    color: #090F47;
+    padding-top: 10px;
+}
+
+
+
+.dropdown-login .anchor {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 50px 5px 10px;
+  }
+  
+
+  .dropdown-login ul.items {
+    display: none;
+    margin: 0;
+    border-top: none;
+  }
+  .dropdown-login.visible .items {
+    display: block;
+  }

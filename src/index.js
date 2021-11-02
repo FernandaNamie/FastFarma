@@ -6,8 +6,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import MotoboyScreen from './pages/motoboy/MotoboyScreen';
 import DrugstoreScren from './pages/drugstore/DrugstoreScreen';
 import OrderStatus from './pages/Client/OrderStatus'
+import RegisterProduct from './pages/drugstore/RegisterProduct';
 import Login from './pages/Auth/Login'
-
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
@@ -16,6 +16,7 @@ ReactDOM.render(
         <Route path="/farmacia" component={DrugstoreScren} />
         <Route path="/cliente" component={OrderStatus} />
         <Route path="/login" component={Login} />
+        <Route path='/registrarProduto' component={RegisterProduct} />
     </Switch>
   </ BrowserRouter>,
   document.getElementById("root")
