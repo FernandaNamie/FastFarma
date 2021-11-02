@@ -30,6 +30,8 @@ export const pedidos = [
     message: "Entregue o pedido",
     minDeliveryTime: "14h20",
     maxDeliveryTime: "14h40",
+    drugStoreAddress: "R. Estudante Manoel Soares Filho, 942",
+    clientAddress: "R. Sidney Benedito de Oliveira, 559",
     products: [
       { productName: "Band-aid Compeed 10 unidades", amount: 2, price: 5.0 },
     ],

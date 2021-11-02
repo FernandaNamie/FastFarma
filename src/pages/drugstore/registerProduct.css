@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@200&display=swap');
+
+.registerProduct{
+    font-family:'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 33px;
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+
+    color: #090F47;
+}
+
+.inputLabel{
+    font-family: 'Overpass', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 17px;
+
+    /* identical to box height */
+    display: flex;
+    align-items: flex-end;
+
+    color: rgba(9, 15, 71, 0.45);
+}
+
+.form-control {
+    border: 0;
+    border-radius: 0%;
+    border-bottom: 1px solid rgba(9, 15, 71, 0.45);
+}
+
+.userInput{
+    font-family: 'Overpass', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 23px;
+    
+    /* identical to box height */
+    display: flex;
+    align-items: flex-end;
+    letter-spacing: -0.016em;
+    
+    /* Grey / 100 */
+    color: #111111;
+}
+
+.input-weight {
+    position: relative;
+}
+.input-weight:after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-top: 10px;
+    content: 'g';
+}
+
+.input-price {
+    position: relative;
+    font-family: 'Overpass', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 23px;
+    
+    /* identical to box height */
+    align-items: flex-end;
+    letter-spacing: -0.016em;
+    
+    /* Grey / 100 */
+    color: #111111;
+}
+
+.input-price:after {
+    position: absolute;
+    top: 0;
+    padding-top: 18px;
+    content: 'R$';
+}
+
+.userPrice{
+    padding: 0px;
+    padding-left: 23px;
+}
+.col-md-6{
+    margin-bottom: 10px;
+}
+
+.prophylactic{
+    border: 1px dashed #7B61FF;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.optionSelected{
+    color: #37B9C5;
+}
+
+/* dropdown*/
+  
+  .dropdown-check-list .anchor {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 50px 5px 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+  }
+  
+  .dropdown-check-list .anchor:after {
+    position: absolute;
+    content: "";
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    padding: 5px;
+    right: 10px;
+    top: 20%;
+    -moz-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+  }
+  
+  .dropdown-check-list .anchor:active:after {
+    right: 8px;
+    top: 21%;
+  }
+  
+  .dropdown-check-list ul.items {
+    padding: 2px;
+    display: none;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+  
+  .dropdown-check-list ul.items li {
+    list-style: none;
+  }
+  
+  .dropdown-check-list.visible .anchor {
+    color: #0094ff;
+  }
+  
+  .dropdown-check-list.visible .items {
+    display: block;
+  }
+
+/* Register button */
+.register{
+    justify-content: center;
+    display: flex;
+}
+
+.Button{
+    width: 343px;
+    height: 43px;
+    background: #37B9C5;
+    border-radius: 50px;
+
+    font-style: normal;
+    font-weight: 600;
+    line-height: 19px;
+
+    /* White/100 */
+    color: #FFFFFF;
+}
