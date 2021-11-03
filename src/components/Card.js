@@ -27,7 +27,7 @@ export default function Card(props) {
     <Border id={props.id}>
       <img src={remedio} width="120px" />
       <Title>{props.nome}</Title>
-      <Price>R${props.preco},00</Price>
+      <Price>R${props.preco.toString().replace(".", ",")}</Price>
       <DivQuantidade>
         <ButtonLess
           onClick={(e) => {

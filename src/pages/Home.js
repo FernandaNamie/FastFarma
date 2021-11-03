@@ -13,21 +13,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
 export default function Home() {
-  
   const [remediosApi, setRemediosApi] = useState(remedios);
   const [pedidos, setPedidos] = useState(remediosApi);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/produtos')
-    .then(response => setRemediosApi(response.data));
+    axios
+      .get("http://localhost:9999/produtos")
+      .then((response) => setRemediosApi(response.data));
 
-  // empty dependency array means this effect will only run once (like componentDidMount in classes)
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, []);
 
   useEffect(() => {
     setPedidos(remediosApi);
-
-  })
+  }, []);
 
   const [state, setState] = React.useState(false);
 
@@ -83,33 +82,41 @@ export default function Home() {
     console.log(pedido_temp);
     setPedidos([...pedidos]);
   }
+  let searchbar =
+    remediosApi !== undefined ? (
+      <SearchColumn setRemediosApi={setRemediosApi} />
+    ) : (
+      <></>
+    );
 
+  let card =
+    remediosApi !== undefined ? (
+      <Cards id={"Cards"}>
+        {remediosApi?.map((remedio, idx) => {
+          return (
+            <Card
+              nome={remedio.nome}
+              preco={remedio.preco}
+              toggleDrawer={toggleDrawer}
+              handleClickLess={handleClickLess}
+              handleClickPlus={handleClickPlus}
+              index={idx}
+              quantidade={pedidos[idx].quantidade}
+              id={`card${idx}`}
+            />
+          );
+        })}
+      </Cards>
+    ) : (
+      <></>
+    );
   return (
     <div>
       <NavBar toggleDrawer={toggleDrawer} />
       <GlobalStyle />
       <Row>
-        <Col md="2">
-          <SearchColumn setRemediosApi={setRemediosApi}/>
-        </Col>
-        <Col md="10">
-          <Cards id={'Cards'}>
-            {remediosApi.map((remedio, idx) => {
-              return (
-                <Card
-                  nome={remedio.nome}
-                  preco={remedio.preco}
-                  toggleDrawer={toggleDrawer}
-                  handleClickLess={handleClickLess}
-                  handleClickPlus={handleClickPlus}
-                  index={idx}
-                  quantidade={pedidos[idx].quantidade}
-                  id={`card${idx}`}
-                />
-              );
-            })}
-          </Cards>
-        </Col>
+        <Col md="2">{searchbar}</Col>
+        <Col md="10">{card}</Col>
       </Row>
       <div>
         <React.Fragment key={"right"}>

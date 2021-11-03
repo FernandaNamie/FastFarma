@@ -8,25 +8,34 @@ import { Column, Bullet, ButtonFilter } from "./StyledComponents";
 import axios from "axios";
 
 export default function SearchColumn(props) {
-  const [name, setName] = useState('');
-  const [tipo, setTipo] = useState('');
+  const [name, setName] = useState("");
+  const [tipo, setTipo] = useState("");
 
-  function search(){
-    if(name != '') {
-      if(tipo == '') {
-        axios.get('http://localhost:8080/produtos/busca?nome=' + name)
-        .then(response => props.setRemediosApi(response.data));
+  function search() {
+    if (name != "") {
+      if (tipo == "") {
+        axios
+          .get("http://localhost:9999/produtos/busca?nome=" + name)
+          .then((response) => props.setRemediosApi(response.data));
       } else {
-        axios.get('http://localhost:8080/produtos/busca?nome=' + name + '&tipo=' + tipo)
-        .then(response => props.setRemediosApi(response.data));
+        axios
+          .get(
+            "http://localhost:9999/produtos/busca?nome=" +
+              name +
+              "&tipo=" +
+              tipo
+          )
+          .then((response) => props.setRemediosApi(response.data));
       }
     } else {
-      if(tipo != '') {
-        axios.get('http://localhost:8080/produtos/busca?tipo=' + tipo)
-        .then(response => props.setRemediosApi(response.data));
+      if (tipo != "") {
+        axios
+          .get("http://localhost:9999/produtos/busca?tipo=" + tipo)
+          .then((response) => {
+            props.setRemediosApi(response.data);
+          });
       }
     }
-
   }
 
   const handleChange = (event) => {
@@ -46,7 +55,7 @@ export default function SearchColumn(props) {
             </InputAdornment>
           }
           value={name}
-          onInput={e => setName(e.target.value)}
+          onInput={(e) => setName(e.target.value)}
         />
       </div>
       <Bullet>
@@ -75,7 +84,13 @@ export default function SearchColumn(props) {
         </RadioGroup>
       </Bullet>
       <div>
-        <ButtonFilter onClick={(e) => { search()}}>Filtrar</ButtonFilter>
+        <ButtonFilter
+          onClick={(e) => {
+            search();
+          }}
+        >
+          Filtrar
+        </ButtonFilter>
       </div>
     </Column>
   );

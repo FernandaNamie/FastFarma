@@ -25,10 +25,10 @@ export default function Shopping(props) {
   const pedidos = props.pedidos;
   const history = useHistory();
 
-  const routeChange = () =>{ 
-    let path = `/cliente`; 
+  const routeChange = () => {
+    let path = `/cliente`;
     history.push(path);
-  }
+  };
 
   let total = 0;
   for (let i = 0; i < pedidos.length; i++) {
@@ -76,7 +76,7 @@ export default function Shopping(props) {
                 <Estoque>Em Estoque</Estoque>
                 <Row>
                   <Col md="4">
-                    <Price>R${pedido.preco},00</Price>
+                    <Price>R${pedido.preco.toString().replace(".", ",")}</Price>
                   </Col>
                   <Col md="1">
                     <ButtonLessCart
