@@ -35,9 +35,6 @@ export default function Login() {
     }
 
     function loginClicked() {
-        // TODO: Acresecentar um seletor de tipo de usuário para:
-        // 1) enviar como parametro para executeBasicAuthenticationService(clientName, password, tipoUsuario)
-        // 2) salvar no localStorage.setItem('tipoUsuario', tipoUsuario) pra saber pra onde redirecionar
         AuthenticationService();
         AuthenticationService.executeBasicAuthenticationService(clientName, password, tipoUsuario)
         if (localStorage.getItem('token') === "erro") {
