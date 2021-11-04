@@ -59,7 +59,7 @@ export default function Login() {
             </h1>
             <div className="container">
                 {hasLoginFailed && (
-                    <div className="alert alert-warning">Invalid Credentials</div>
+                    <div className="alert alert-warning">Credenciais Inválidas</div>
                 )}
                 {showSuccessMessage && <div>Bem vendo!</div>}
                 <div class="col-md-6 offset-md-3" style={{ marginBottom: "20px" }}>
@@ -114,7 +114,7 @@ export default function Login() {
                         </span>
                         <ul className="items">
                             <li>
-                                Cliente
+                                <a href="/RegistrarCliente">Cliente</a>
                             </li>
                             <li>
                                 Farmácia

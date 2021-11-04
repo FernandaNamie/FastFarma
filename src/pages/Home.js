@@ -92,7 +92,9 @@ export default function Home() {
     const formData = new FormData();
 
     formData.append('data', JSON.stringify(changePedidos));
-    axios.post('http://localhost:8080/order/', changePedidos).catch(function (error) {
+    axios.post('http://localhost:8080/order/',
+              { headers: { "Authorization": `Bearer ${localStorage.getItem('token')}` } },
+              changePedidos).catch(function (error) {
       console.log(error);
     });
   }

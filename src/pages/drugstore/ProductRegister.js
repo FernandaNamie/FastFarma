@@ -1,9 +1,9 @@
 import { React, useState, useRef } from "react";
 import NavBar from "../../components/NavBar";
-import "./registerProduct.css";
+import "./ProductRegister.css";
 import { Close, Check } from "@material-ui/icons/";
 
-export default function RegisterProduct() {
+export default function ProductRegister() {
   const [productName, setName] = useState("");
   const [productWeight, setWeight] = useState("");
   const [productPrice, setPrice] = useState("");

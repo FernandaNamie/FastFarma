@@ -5,8 +5,9 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import MotoboyScreen from './pages/motoboy/MotoboyScreen';
 import DrugstoreScren from './pages/drugstore/DrugstoreScreen';
-import OrderStatus from './pages/Client/OrderStatus'
-import RegisterProduct from './pages/drugstore/RegisterProduct';
+import OrderStatus from './pages/Client/OrderStatus';
+import RegisterClient from './pages/Client/RegisterClient';
+import ProductRegister from './pages/drugstore/ProductRegister';
 import Login from './pages/Auth/Login'
 ReactDOM.render(
   <BrowserRouter>
@@ -16,7 +17,8 @@ ReactDOM.render(
         <Route path="/farmacia" component={DrugstoreScren} />
         <Route path="/cliente" component={OrderStatus} />
         <Route path="/login" component={Login} />
-        <Route path='/registrarProduto' component={RegisterProduct} />
+        <Route path='/registrarProduto' component={ProductRegister} />
+        <Route path='/RegistrarCliente' component={RegisterClient} />
     </Switch>
   </ BrowserRouter>,
   document.getElementById("root")
