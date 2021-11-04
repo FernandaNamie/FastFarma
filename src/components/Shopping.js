@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useHistory } from "react-router";
 import { Box } from "@material-ui/system";
 import remedio from "../img/remedio.png";
 import { Col, Row } from "react-bootstrap";
@@ -22,6 +23,13 @@ import {
 
 export default function Shopping(props) {
   const pedidos = props.pedidos;
+  const history = useHistory();
+
+  const routeChange = () =>{ 
+    props.handlePedidos(pedidos);
+    let path = `/cliente`; 
+    history.push(path);
+  }
 
   let total = 0;
   for (let i = 0; i < pedidos.length; i++) {
@@ -143,7 +151,7 @@ export default function Shopping(props) {
           <Total>R${total},00</Total>
         </Col>
       </Row>
-      <ButtonEnd>Finalizar pedido</ButtonEnd>
+      <ButtonEnd onClick={routeChange}>Finalizar pedido</ButtonEnd>
     </Box>
   );
 }

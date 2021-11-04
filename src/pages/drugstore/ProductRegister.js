@@ -1,9 +1,9 @@
 import { React, useState, useRef } from "react";
 import NavBar from "../../components/NavBar";
-import "./registerProduct.css";
+import "./ProductRegister.css";
 import { Close, Check } from "@material-ui/icons/";
 
-export default function RegisterProduct() {
+export default function ProductRegister() {
   const [productName, setName] = useState("");
   const [productWeight, setWeight] = useState("");
   const [productPrice, setPrice] = useState("");
@@ -145,7 +145,7 @@ export default function RegisterProduct() {
         </div>
 
         <div className="col-md-6 offset-md-3 register">
-          <button className="btn registerButton" onClick={registerProductHandler}>
+          <button className="btn Button" onClick={registerProductHandler}>
             Cadastrar Produto
           </button>
         </div>

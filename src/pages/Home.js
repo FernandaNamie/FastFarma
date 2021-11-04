@@ -6,13 +6,32 @@ import SearchColumn from "../components/SearchColumn";
 import { remedios } from "../mockData/remedios";
 import { Col, Row } from "react-bootstrap";
 import Shopping from "../components/Shopping";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import { Drawer } from "@material-ui/core";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 
 export default function Home() {
-  const [pedidos, setPedidos] = useState(remedios);
+
+  const [remediosApi, setRemediosApi] = useState(remedios);
+  const [pedidos, setPedidos] = useState(remediosApi);
+
+  useEffect(() => {
+    axios.get(
+      'http://localhost:8080/produtos',
+      { headers: { "Authorization": `Bearer ${localStorage.getItem('token')}` } }
+
+    )
+      .then(response => setRemediosApi(response.data));
+
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  }, []);
+
+  useEffect(() => {
+    setPedidos(remediosApi);
+
+  })
 
   const [state, setState] = React.useState(false);
 
@@ -69,17 +88,28 @@ export default function Home() {
     setPedidos([...pedidos]);
   }
 
+  function handlePedidos(changePedidos) {
+    const formData = new FormData();
+
+    formData.append('data', JSON.stringify(changePedidos));
+    axios.post('http://localhost:8080/order/',
+              { headers: { "Authorization": `Bearer ${localStorage.getItem('token')}` } },
+              changePedidos).catch(function (error) {
+      console.log(error);
+    });
+  }
+
   return (
     <div>
       <NavBar toggleDrawer={toggleDrawer} />
       <GlobalStyle />
       <Row>
         <Col md="2">
-          <SearchColumn />
+          <SearchColumn setRemediosApi={setRemediosApi} />
         </Col>
         <Col md="10">
           <Cards id={'Cards'}>
-            {remedios.map((remedio, idx) => {
+            {remediosApi.map((remedio, idx) => {
               return (
                 <Card
                   nome={remedio.nome}
@@ -112,6 +142,7 @@ export default function Home() {
               handleClickLess={handleClickLess}
               handleClickPlus={handleClickPlus}
               handleDelete={handleDelete}
+              handlePedidos={handlePedidos}
             />
           </Drawer>
         </React.Fragment>

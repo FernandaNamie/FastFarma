@@ -38,6 +38,7 @@ export default function NavBar(props) {
           <NavDropdown.Item href="/cliente">Cliente</NavDropdown.Item>
           <NavDropdown.Item href="/farmacia"> Farmacia</NavDropdown.Item>
           <NavDropdown.Item href="/motoboy">Motoboy</NavDropdown.Item>
+          <NavDropdown.Item href="/Login">Login</NavDropdown.Item>
         </NavDropdown>
       </Bar>
     </div>
