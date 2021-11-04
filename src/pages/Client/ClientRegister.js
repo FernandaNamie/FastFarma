@@ -5,7 +5,7 @@ import Visibility from "@material-ui/icons/Visibility";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Input from "@material-ui/core/Input";
-
+import { useHistory } from "react-router";
 
 export default function ClientRegister() {
     const [clientName, setName] = useState("");
@@ -23,14 +23,14 @@ export default function ClientRegister() {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+    const history = useHistory();
+
     function registerClientHandler() {
       if (password === confirmPassword) {
         fetch("http://localhost:8080/api/user-profile/register", {
-          method: "POST",
+          method: "post",
           headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem('token')}`
+            "Content-Type": "application/json"
           },
           body: JSON.stringify({
             name: clientName,
@@ -42,9 +42,11 @@ export default function ClientRegister() {
             password : password
           }),
         }).then(response => {
+          console.log(response)
           if (response.status === 200 || response.status === 201) {
               setSuccessMessage(true);
               setRegisterFailed(false);
+              history.push('/login');
           } else {
               setRegisterFailed(true);
               setSuccessMessage(false);

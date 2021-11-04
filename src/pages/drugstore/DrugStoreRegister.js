@@ -5,7 +5,7 @@ import Visibility from "@material-ui/icons/Visibility";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Input from "@material-ui/core/Input";
-
+import { useHistory } from "react-router";
 
 export default function DrugStoreRegister() {
     const [name, setName] = useState("");
@@ -22,14 +22,15 @@ export default function DrugStoreRegister() {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+    const history = useHistory();
+
     function registerDrugStoreHandler() {
       if (password === confirmPassword) {
         fetch("http://localhost:8080/farmacias", {
           method: "POST",
           headers: {
             Accept: "application/json",
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem('token')}`
+            "Content-Type": "application/json"
           },
           body: JSON.stringify({
             name: name,
@@ -43,6 +44,7 @@ export default function DrugStoreRegister() {
           if (response.status === 200 || response.status === 201) {
               setSuccessMessage(true);
               setRegisterFailed(false);
+              history.push('/login');
           } else {
               setRegisterFailed(true);
               setSuccessMessage(false);

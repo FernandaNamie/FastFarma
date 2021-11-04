@@ -5,7 +5,7 @@ import Visibility from "@material-ui/icons/Visibility";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Input from "@material-ui/core/Input";
-
+import { useHistory } from "react-router";
 
 export default function MotoboyRegister() {
     const [name, setName] = useState("");
@@ -23,14 +23,15 @@ export default function MotoboyRegister() {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+    const history = useHistory();
+
     function registerClientHandler() {
       if (password === confirmPassword) {
         fetch("http://localhost:8080/motoboys", {
           method: "POST",
           headers: {
             Accept: "application/json",
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem('token')}`
+            "Content-Type": "application/json"
           },
           body: JSON.stringify({
             name: name,
@@ -45,6 +46,7 @@ export default function MotoboyRegister() {
           if (response.status === 200 || response.status === 201) {
               setSuccessMessage(true);
               setRegisterFailed(false);
+              history.push('/login');
           } else {
               setRegisterFailed(true);
               setSuccessMessage(false);
