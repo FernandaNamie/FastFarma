@@ -117,10 +117,10 @@ export default function Login() {
                                 <a href="/RegistrarCliente">Cliente</a>
                             </li>
                             <li>
-                                Farmácia
+                                <a href="/RegistrarFarmacia">Farmácia</a>
                             </li>
                             <li>
-                                Motoboy
+                            <a href="/RegistrarMotoboy">Motoboy</a>
                             </li>
                         </ul>
                     </div>

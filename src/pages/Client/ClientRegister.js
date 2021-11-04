@@ -1,15 +1,13 @@
-import { React, useState, useRef } from "react";
+import { React, useState} from "react";
 import NavBar from "../../components/NavBar";
-import { Close, Check } from "@material-ui/icons/";
 import IconButton from "@material-ui/core/IconButton";
-import InputLabel from "@material-ui/core/InputLabel";
 import Visibility from "@material-ui/icons/Visibility";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Input from "@material-ui/core/Input";
 
 
-export default function RegisterClient() {
+export default function ClientRegister() {
     const [clientName, setName] = useState("");
     const [cellPhone, setCellPhone] = useState("");
     const [cpf, setCpf] = useState("");
@@ -108,7 +106,7 @@ export default function RegisterClient() {
               type="text"
               value={birthday}
               className="form-control userInput p-0"
-              placeholder="Data de Aniversário"
+              placeholder="Data de Nascimento"
               required=""
               onChange={(e) => setBirthday(e.target.value)}
             />
