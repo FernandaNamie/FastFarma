@@ -13,8 +13,8 @@ export default function OrderStatusHeader(props) {
                 </Col>
                 <Col md="8">
                     <Row><Status>Pedido confirmado!</Status></Row>
-                    <Row><OrderInformation>#A821AJKSD90</OrderInformation></Row>
-                    <Row><OrderInformation>Previsão de entrega: 12h50 - 13h00</OrderInformation></Row>
+                    <Row><OrderInformation>#{props.id} </OrderInformation></Row>
+                    <Row><OrderInformation>Previsão de entrega: {props.minDeliveryTime} - {props.maxDeliveryTime}</OrderInformation></Row>
                 </Col>
             </Row>
             <DivLine>
