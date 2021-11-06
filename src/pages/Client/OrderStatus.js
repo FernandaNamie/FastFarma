@@ -8,13 +8,28 @@ import ProductLine from '../../components/client/ProductLine.js';
 import { pedido } from "../../mockData/pedido";
 import OrderStatusHeader from '../../components/client/OrderStatusHeader.js';
 import OrderStatusTimeLine from '../../components/client/OrderStatusTimeline.js';
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 export default function OrderStatus() {
+
+  const [order, setOrder] = useState(pedido);
   let total = 0;
   let frete = 6;
   for (let i = 0; i < pedido.length; i++) {
     total = total + pedido[i].price * pedido[i].amount;
   }
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/order", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then((response) => setOrder(response.data));
+
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  }, []);
+
   return (
     <div>
       <NavBar />
@@ -23,7 +38,11 @@ export default function OrderStatus() {
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Col md="8">
             <Rectangle>
-              <OrderStatusHeader />
+              <OrderStatusHeader 
+                id={order.id}
+                minDeliveryTime={order.minDeliveryTime}
+                maxDeliveryTime={order.maxDeliveryTime}
+              />
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <Col md="6">
                   <OrderStatusTimeLine />
@@ -36,13 +55,13 @@ export default function OrderStatus() {
                     </Col>
                   </Row>
                   <div id="products">
-                    {pedido.map((item, idx) => {
+                    {order.orderProducts.map((item) => {
                       return (
                         <ProductLine
-                          name={item.name}
-                          amount={item.amount}
-                          price={item.price}
-                          id={`product-${idx}`}
+                          name={item.produto.nome}
+                          amount={item.quantity}
+                          price={item.produto.preco}
+                          id={`product-${item.produto.id}`}
                         />
                       );
                     })}
@@ -54,8 +73,8 @@ export default function OrderStatus() {
                           Frete:
                         </Col>
                         <Col md="8">
-                          <div id="frete" frete={frete}>
-                            <Price>R${frete},00</Price>
+                          <div id="frete" frete={order.freight}>
+                            <Price>R$ {order.freight}</Price>
                           </div>
                         </Col>
                       </Row>
@@ -64,8 +83,8 @@ export default function OrderStatus() {
                           Total:
                         </Col>
                         <Col md="8">
-                          <div id="total" total={total + frete}>
-                            <Price>R${total + frete},00</Price>
+                          <div id="total" total={order.price}>
+                            <Price>R$ {order.price}</Price>
                           </div>
                         </Col>
                       </Row>

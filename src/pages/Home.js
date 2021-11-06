@@ -11,27 +11,26 @@ import React from "react";
 import { Drawer } from "@material-ui/core";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import { useHistory } from "react-router";
 
 export default function Home() {
-
   const [remediosApi, setRemediosApi] = useState(remedios);
   const [pedidos, setPedidos] = useState(remediosApi);
+  const history = useHistory();
 
   useEffect(() => {
-    axios.get(
-      'http://localhost:8080/produtos',
-      { headers: { "Authorization": `Bearer ${localStorage.getItem('token')}` } }
-
-    )
-      .then(response => setRemediosApi(response.data));
+    axios
+      .get("http://localhost:8080/produtos", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then((response) => setRemediosApi(response.data));
 
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, []);
 
   useEffect(() => {
     setPedidos(remediosApi);
-
-  })
+  });
 
   const [state, setState] = React.useState(false);
 
@@ -91,12 +90,19 @@ export default function Home() {
   function handlePedidos(changePedidos) {
     const formData = new FormData();
 
-    formData.append('data', JSON.stringify(changePedidos));
-    axios.post('http://localhost:8080/order/',
-              { headers: { "Authorization": `Bearer ${localStorage.getItem('token')}` } },
-              changePedidos).catch(function (error) {
-      console.log(error);
-    });
+    formData.append("data", JSON.stringify(changePedidos));
+    axios
+      .post("http://localhost:8080/order/", changePedidos, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then((response) => {
+        if ((response.status === 200 || response.status === 201)) {
+            history.push('/cliente');
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   return (
@@ -108,7 +114,7 @@ export default function Home() {
           <SearchColumn setRemediosApi={setRemediosApi} />
         </Col>
         <Col md="10">
-          <Cards id={'Cards'}>
+          <Cards id={"Cards"}>
             {remediosApi.map((remedio, idx) => {
               return (
                 <Card

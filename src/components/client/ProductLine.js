@@ -14,7 +14,7 @@ export default function ProductLine(props) {
                         </Col>
                         <Col md="8">
                             <Product id="name">{props.name}</Product>
-                            <Price id="price">R${props.price},00</Price>
+                            <Price id="price">R$ {props.price}</Price>
                         </Col>
                     </Row>
                 </Col>
