@@ -14,15 +14,15 @@ export default function SearchColumn(props) {
   function search(){
     if(name != '') {
       if(tipo == '') {
-        axios.get('http://localhost:8080/produtos/busca?nome=' + name)
+        axios.get('https://fastfarma-webapp.herokuapp.com/produtos/busca?nome=' + name)
         .then(response => props.setRemediosApi(response.data));
       } else {
-        axios.get('http://localhost:8080/produtos/busca?nome=' + name + '&tipo=' + tipo)
+        axios.get('https://fastfarma-webapp.herokuapp.com/produtos/busca?nome=' + name + '&tipo=' + tipo)
         .then(response => props.setRemediosApi(response.data));
       }
     } else {
       if(tipo != '') {
-        axios.get('http://localhost:8080/produtos/busca?tipo=' + tipo)
+        axios.get('https://fastfarma-webapp.herokuapp.com/produtos/busca?tipo=' + tipo)
         .then(response => props.setRemediosApi(response.data));
       }
     }

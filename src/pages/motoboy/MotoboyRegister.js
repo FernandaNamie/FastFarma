@@ -27,7 +27,7 @@ export default function MotoboyRegister() {
 
     function registerClientHandler() {
       if (password === confirmPassword) {
-        fetch("http://localhost:8080/motoboys", {
+        fetch("https://fastfarma-webapp.herokuapp.com/motoboys", {
           method: "POST",
           headers: {
             Accept: "application/json",

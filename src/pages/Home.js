@@ -20,7 +20,7 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/produtos", {
+      .get("https://fastfarma-webapp.herokuapp.com/produtos", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((response) => setRemediosApi(response.data));
@@ -92,7 +92,7 @@ export default function Home() {
 
     formData.append("data", JSON.stringify(changePedidos));
     axios
-      .post("http://localhost:8080/order/", changePedidos, {
+      .post("https://fastfarma-webapp.herokuapp.com/order/", changePedidos, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((response) => {

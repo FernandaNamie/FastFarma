@@ -19,7 +19,7 @@ export default function ProductRegister() {
 
   function registerProductHandler() {
     if (productWeight > 0 && productPrice > 0) {
-      fetch("http://localhost:8080/produtos", {
+      fetch("https://fastfarma-webapp.herokuapp.com/produtos", {
         method: "POST",
         headers: {
           Accept: "application/json",

@@ -27,7 +27,7 @@ export default function ClientRegister() {
 
     function registerClientHandler() {
       if (password === confirmPassword) {
-        fetch("http://localhost:8080/api/user-profile/register", {
+        fetch("https://fastfarma-webapp.herokuapp.com/api/user-profile/register", {
           method: "post",
           headers: {
             "Content-Type": "application/json"

@@ -22,7 +22,7 @@ export default function OrderStatus() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/order", {
+      .get("https://fastfarma-webapp.herokuapp.com/order", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((response) => setOrder(response.data));

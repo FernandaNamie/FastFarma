@@ -26,7 +26,7 @@ export default function DrugStoreRegister() {
 
     function registerDrugStoreHandler() {
       if (password === confirmPassword) {
-        fetch("http://localhost:8080/farmacias", {
+        fetch("https://fastfarma-webapp.herokuapp.com/farmacias", {
           method: "POST",
           headers: {
             Accept: "application/json",
