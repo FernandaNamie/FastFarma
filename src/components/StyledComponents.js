@@ -12,6 +12,7 @@ export const Border = styled.span`
   margin-top: 30px;
   margin-left: 50px;
   text-align: left;
+  min-height: 280px;
   }
 `;
 
@@ -22,6 +23,7 @@ export const Title = styled.div`
   font-size: 13px;
   color: #555555;
   margin-left:8px;
+  min-height: 70px;
   }
 `;
 
