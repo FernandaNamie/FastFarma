@@ -1,8 +1,8 @@
-import Home from "./pages/Home";
+import Login from "./pages/Auth/Login";
 function App() {
   return (
     <div>
-      <Home />
+      <Login />
     </div>
   );
 }

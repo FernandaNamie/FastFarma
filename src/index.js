@@ -10,19 +10,19 @@ import ClientRegister from './pages/Client/ClientRegister';
 import ProductRegister from './pages/drugstore/ProductRegister';
 import DrugStoreRegister from './pages/drugstore/DrugStoreRegister';
 import MotoboyRegister from './pages/motoboy/MotoboyRegister';
-import Login from './pages/Auth/Login'
+import Home from './pages/Home'
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-        <Route path="/" exact={true} component={App} />
-        <Route path="/motoboy" component={MotoboyScreen} />
-        <Route path="/farmacia" component={DrugstoreScren} />
-        <Route path="/cliente" component={OrderStatus} />
-        <Route path="/login" component={Login} />
-        <Route path='/RegistrarProduto' component={ProductRegister} />
-        <Route path='/RegistrarCliente' component={ClientRegister} />
-        <Route path='/RegistrarFarmacia' component={DrugStoreRegister} />
-        <Route path='/RegistrarMotoboy' component={MotoboyRegister} />
+      <Route path="/" exact={true} component={App} />
+      <Route path="/motoboy" component={MotoboyScreen} />
+      <Route path="/farmacia" component={DrugstoreScren} />
+      <Route path="/cliente" component={OrderStatus} />
+      <Route path="/produtos" component={Home} />
+      <Route path='/RegistrarProduto' component={ProductRegister} />
+      <Route path='/RegistrarCliente' component={ClientRegister} />
+      <Route path='/RegistrarFarmacia' component={DrugStoreRegister} />
+      <Route path='/RegistrarMotoboy' component={MotoboyRegister} />
     </Switch>
   </ BrowserRouter>,
   document.getElementById("root")

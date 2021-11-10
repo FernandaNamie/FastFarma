@@ -20,9 +20,10 @@ export default function Login() {
 
     const routeChange = () => {
         let path = '';
-        if (localStorage.getItem('tipoUsuario') === "CLIENTE") { path = '/' }
+        if (localStorage.getItem('tipoUsuario') === "CLIENTE") { path = '/produtos' }
         else if (localStorage.getItem('tipoUsuario') === "MOTOBOY") { path = '/motoboy' }
-        else { path = '/farmacia' }
+        else if (localStorage.getItem('tipoUsuario') === "FARMACIA") { path = '/farmacia' }
+        else { return }
         history.push(path);
     }
 
@@ -47,7 +48,7 @@ export default function Login() {
             routeChange()
         }
     }
-
+    routeChange()
     return (
         <div>
             <NavBar />
@@ -120,7 +121,7 @@ export default function Login() {
                                 <a href="/RegistrarFarmacia">Farmácia</a>
                             </li>
                             <li>
-                            <a href="/RegistrarMotoboy">Motoboy</a>
+                                <a href="/RegistrarMotoboy">Motoboy</a>
                             </li>
                         </ul>
                     </div>
