@@ -6,6 +6,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Input from "@material-ui/core/Input";
 import { useHistory } from "react-router";
+import axios from "axios";
 
 export default function DrugStoreRegister() {
   const [name, setName] = useState("");
@@ -26,13 +27,14 @@ export default function DrugStoreRegister() {
 
   function registerDrugStoreHandler() {
     if (password === confirmPassword) {
-      fetch("/farmacias", {
+      axios({
+        url: "/farmacias",
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
+        data: JSON.stringify({
           name: name,
           cnpj: cnpj,
           address: address,
@@ -44,7 +46,7 @@ export default function DrugStoreRegister() {
         if (response.status === 200 || response.status === 201) {
           setSuccessMessage(true);
           setRegisterFailed(false);
-          history.push('/login');
+          history.push('/');
         } else {
           setRegisterFailed(true);
           setSuccessMessage(false);
