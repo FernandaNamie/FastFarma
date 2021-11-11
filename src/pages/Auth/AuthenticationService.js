@@ -4,8 +4,8 @@ const API_URL = 'http://localhost:8080';
 
 export default function AuthenticationService() {
 
-    function executeBasicAuthenticationService(nomeUsuario, senha, tipoUsuario) {
-        axios({
+    async function executeBasicAuthenticationService(nomeUsuario, senha, tipoUsuario) {
+        await axios({
             method: 'post',
             url: API_URL + '/login',
             headers: {
@@ -17,6 +17,7 @@ export default function AuthenticationService() {
                 "tipoUsuario": tipoUsuario
             }
         }).then(response => {
+            console.log(response.data)
             localStorage.setItem('token', response.data)
         }).catch(error => {
             console.log(error)

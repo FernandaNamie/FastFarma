@@ -35,9 +35,9 @@ export default function Login() {
         }
     }
 
-    function loginClicked() {
+    async function loginClicked() {
         AuthenticationService();
-        AuthenticationService.executeBasicAuthenticationService(clientName, password, tipoUsuario)
+        await AuthenticationService.executeBasicAuthenticationService(clientName, password, tipoUsuario)
         if (localStorage.getItem('token') === "erro") {
             setLoginFailed(true)
             setSuccessMessage(false)
