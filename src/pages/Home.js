@@ -19,11 +19,13 @@ export default function Home() {
   const history = useHistory();
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/produtos", {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      })
-      .then((response) => setRemediosApi(response.data));
+    if (localStorage.getItem("token") !== "erro")
+      axios
+        .get("http://localhost:8080/produtos", {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        })
+        .then((response) => setRemediosApi(response.data))
+        .catch((error) => console.log(error));
 
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, []);
@@ -97,7 +99,7 @@ export default function Home() {
       })
       .then((response) => {
         if ((response.status === 200 || response.status === 201)) {
-            history.push('/cliente');
+          history.push('/cliente');
         }
       })
       .catch(function (error) {
