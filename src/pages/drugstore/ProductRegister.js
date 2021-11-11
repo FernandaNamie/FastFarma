@@ -19,7 +19,7 @@ export default function ProductRegister() {
 
   function registerProductHandler() {
     if (productWeight > 0 && productPrice > 0) {
-      fetch("http://localhost:8080/produtos", {
+      fetch("/produtos", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -32,16 +32,16 @@ export default function ProductRegister() {
           //profilatico: isProphylactic,
           nome: productName,
           peso: productWeight,
-          preco : productPrice
+          preco: productPrice
         }),
       }).then(response => {
-          console.log(response.status)
+        console.log(response.status)
         if (response.status === 201) {
-            setSuccessMessage(true);
-            setRegisterFailed(false);
+          setSuccessMessage(true);
+          setRegisterFailed(false);
         } else {
-            setRegisterFailed(true);
-            setSuccessMessage(false);
+          setRegisterFailed(true);
+          setSuccessMessage(false);
         }
       }).catch(error => {
         console.error(error);
@@ -122,22 +122,22 @@ export default function ProductRegister() {
             </div>
           </div>
         </div>
-        <div className="col-md-6 offset-md-3"  style={{ marginBottom: "20px" }}>
+        <div className="col-md-6 offset-md-3" style={{ marginBottom: "20px" }}>
           <div className="dropdown-check-list" tabindex="100" ref={dropDownRef}>
             <span className="anchor" onClick={showDropDownHandler}>
               Selecione o catálogo do produto
             </span>
             <ul className="items">
               <li>
-                <input type="checkbox"  defaultChecked={isMedicament} onChange={() => setMedicament(!isMedicament)}/>
+                <input type="checkbox" defaultChecked={isMedicament} onChange={() => setMedicament(!isMedicament)} />
                 Medicamento
               </li>
               <li>
-                <input type="checkbox" defaultChecked={isCosmetic} onChange={() => setCosmetic(!isCosmetic)}/>
+                <input type="checkbox" defaultChecked={isCosmetic} onChange={() => setCosmetic(!isCosmetic)} />
                 Cosmético
               </li>
               <li>
-                <input type="checkbox" defaultChecked={isPrescribed} onChange={() => setPrescribed(!isPrescribed)}/>
+                <input type="checkbox" defaultChecked={isPrescribed} onChange={() => setPrescribed(!isPrescribed)} />
                 Receitado
               </li>
             </ul>

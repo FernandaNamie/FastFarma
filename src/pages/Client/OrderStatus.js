@@ -22,7 +22,7 @@ export default function OrderStatus() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/order", {
+      .get("/order", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((response) => setOrder(response.data));
@@ -38,7 +38,7 @@ export default function OrderStatus() {
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Col md="8">
             <Rectangle>
-              <OrderStatusHeader 
+              <OrderStatusHeader
                 id={order.id}
                 minDeliveryTime={order.minDeliveryTime}
                 maxDeliveryTime={order.maxDeliveryTime}

@@ -11,19 +11,19 @@ export default function SearchColumn(props) {
   const [name, setName] = useState('');
   const [tipo, setTipo] = useState('');
 
-  function search(){
-    if(name != '') {
-      if(tipo == '') {
-        axios.get('http://localhost:8080/produtos/busca?nome=' + name)
-        .then(response => props.setRemediosApi(response.data));
+  function search() {
+    if (name != '') {
+      if (tipo == '') {
+        axios.get('/produtos/busca?nome=' + name)
+          .then(response => props.setRemediosApi(response.data));
       } else {
-        axios.get('http://localhost:8080/produtos/busca?nome=' + name + '&tipo=' + tipo)
-        .then(response => props.setRemediosApi(response.data));
+        axios.get('/produtos/busca?nome=' + name + '&tipo=' + tipo)
+          .then(response => props.setRemediosApi(response.data));
       }
     } else {
-      if(tipo != '') {
-        axios.get('http://localhost:8080/produtos/busca?tipo=' + tipo)
-        .then(response => props.setRemediosApi(response.data));
+      if (tipo != '') {
+        axios.get('/produtos/busca?tipo=' + tipo)
+          .then(response => props.setRemediosApi(response.data));
       }
     }
 
@@ -75,7 +75,7 @@ export default function SearchColumn(props) {
         </RadioGroup>
       </Bullet>
       <div>
-        <ButtonFilter onClick={(e) => { search()}}>Filtrar</ButtonFilter>
+        <ButtonFilter onClick={(e) => { search() }}>Filtrar</ButtonFilter>
       </div>
     </Column>
   );

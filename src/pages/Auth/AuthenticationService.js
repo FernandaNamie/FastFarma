@@ -1,13 +1,12 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080';
 
 export default function AuthenticationService() {
 
     async function executeBasicAuthenticationService(nomeUsuario, senha, tipoUsuario) {
         await axios({
             method: 'post',
-            url: API_URL + '/login',
+            url: '/login',
             headers: {
                 'content-type': 'application/json'
             },

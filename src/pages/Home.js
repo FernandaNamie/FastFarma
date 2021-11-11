@@ -21,7 +21,7 @@ export default function Home() {
   useEffect(() => {
     if (localStorage.getItem("token") !== "erro")
       axios
-        .get("http://localhost:8080/produtos", {
+        .get("/produtos", {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         })
         .then((response) => setRemediosApi(response.data))
@@ -94,7 +94,7 @@ export default function Home() {
 
     formData.append("data", JSON.stringify(changePedidos));
     axios
-      .post("http://localhost:8080/order/", changePedidos, {
+      .post("/order/", changePedidos, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((response) => {

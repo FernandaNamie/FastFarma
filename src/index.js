@@ -13,6 +13,7 @@ import MotoboyRegister from './pages/motoboy/MotoboyRegister';
 import Home from './pages/Home'
 import axios from 'axios'
 
+axios.defaults.baseURL = "http://localhost:8080"
 axios.interceptors.request.use(request => {
   var token = localStorage.getItem("token")
   if (token !== "") {
