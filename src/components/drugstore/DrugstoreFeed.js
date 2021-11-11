@@ -5,7 +5,7 @@ import DrugstoreClientOrder from "./DrugstoreClientOrder";
 
 export default function DrugstoreFeed(props) {
   let getButton = <></>;
-
+  console.log(props)
   if (props.pedido.status === "Novo")
     getButton = (
       <>

@@ -10,7 +10,7 @@ export default function Sidebar(props) {
     setKey(key);
     props.update(data[0]);
   }
-
+  console.log(props)
   const [key, setKey] = useState(props.orders[0].orderNumber);
 
   return (
@@ -23,8 +23,8 @@ export default function Sidebar(props) {
           <ClientData
             name={order.client}
             key={order.orderNumber}
-            id={order.orderNumber}
-            message={order.message}
+            id={order.orderNumber ? order.orderNumber : order.id}
+            message={order.message ? order.message : (order.status === "ORDERED" ? "Pedido novo! Clique para ver." : "")}
             status={order.status}
             onClick={onClick}
             selected={order.orderNumber === key ? "ClientSelected" : ""}
