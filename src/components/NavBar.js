@@ -5,6 +5,7 @@ import { ShoppingCartOutlined } from "@material-ui/icons";
 import AppsIcon from "@material-ui/icons/Apps";
 import { NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import {
   Bar,
@@ -15,6 +16,10 @@ import {
 import "./NavBar.css";
 import icon from "../img/logo.png";
 
+function logout() {
+  localStorage.setItem('token', "")
+  localStorage.setItem('tipoUsuario', "")
+}
 export default function NavBar(props) {
   return (
     <div>
@@ -34,11 +39,11 @@ export default function NavBar(props) {
         <PersonOutlineOutlined />
         <FavoriteBorder />
         <NavDropdown title={<AppsIcon />}>
-          <NavDropdown.Item href="/">Home</NavDropdown.Item>
+          <NavDropdown.Item href="/produtos">Produtos</NavDropdown.Item>
           <NavDropdown.Item href="/cliente">Cliente</NavDropdown.Item>
           <NavDropdown.Item href="/farmacia"> Farmacia</NavDropdown.Item>
           <NavDropdown.Item href="/motoboy">Motoboy</NavDropdown.Item>
-          <NavDropdown.Item href="/Login">Login</NavDropdown.Item>
+          <NavDropdown.Item href="/" onClick={logout}>Logout</NavDropdown.Item>
         </NavDropdown>
       </Bar>
     </div>
