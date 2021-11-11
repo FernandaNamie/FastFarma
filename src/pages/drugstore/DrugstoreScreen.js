@@ -12,7 +12,7 @@ export default function DrugstoreScreen() {
 
   return (
     <div>
-      <NavBar />
+      <NavBar isPharmacy={true}/>
       <DrugstoreFeed
         client={pedido.client}
         orderNumber={pedido.orderNumber}
